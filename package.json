@@ -1,56 +1,58 @@
 {
-  "dependencies": {
-    "@whiskeysockets/baileys": "^6.7.17",
-    "acrcloud": "^1.4.0",
-    "assemblyai": "^2.0.2",
-    "awesome-phonenumber": "^6.1.0",
-    "axios": "^0.21.1",
-    "cfonts": "^2.10.0",
-    "chalk": "^4.1.2",
-    "cheerio": "^1.0.0-rc.12",
-    "colors": "^1.4.0",
-    "crypto": "^1.0.1",
-    "emoji-api": "^2.0.1",
-    "escape-string-regexp": "^1.0.5",
-    "fake-useragent": "^1.0.1",
-    "fluent-ffmpeg": "^2.1.2",
-    "fs-extra": "^11.1.0",
-    "https": "^1.0.0",
-    "jsdom": "^19.0.0",
-    "link-preview-js": "^3.0.5",
-    "linkifyjs": "^4.1.0",
-    "megajs": "^1.1.6",
-    "millify": "^6.1.0",
-    "moment-timezone": "^0.5.40",
-    "multistream": "^4.1.0",
-    "node-fetch": "^2.6.7",
-    "node-webpmux": "^3.2.0",
-    "os": "^0.1.2",
-    "pino": "^7.8.0",
-    "qrcode-terminal": "^0.12.0",
-    "readline": "^1.3.0",
-    "request": "^2.88.2",
-    "yt-search": "^2.11.0"
-  },
-  "name": "ted-nexmart",
-  "description": "Sempre buscando melhorar, qualquer dúvida entra em contato comigo por meio do WhatsApp: +55 99 99224-1471",
-  "version": "4.1.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "ulimit -c 0 && bash start.sh sim",
-    "test": "node connect.js"
+  "name": "@cacheable/node-cache",
+  "version": "1.5.5",
+  "description": "Simple and Maintained fast NodeJS internal caching",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
   },
   "repository": {
-    "type": "canal",
-    "url": "https://whatsapp.com/channel/0029VajvIUnLikgCdbIzSm2h"
+    "type": "git",
+    "url": "git+https://github.com/jaredwray/cacheable.git",
+    "directory": "packages/node-cache"
   },
-  "keywords": [
-    "bot-baileys"
-  ],
-  "author": "ted-bot",
+  "author": "Jared Wray <me@jaredwray.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://tedzinho.online"
+  "private": false,
+  "keywords": [
+    "cache",
+    "caching",
+    "node",
+    "nodejs",
+    "cacheable",
+    "cacheable-node-cache",
+    "node-cache",
+    "cacheable-node"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.15.7",
+    "@vitest/coverage-v8": "^3.1.3",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3",
+    "xo": "^0.60.0"
   },
-  "homepage": "https://tedzinho.online"
+  "dependencies": {
+    "hookified": "^1.8.2",
+    "keyv": "^5.3.3",
+    "cacheable": "^1.9.0"
+  },
+  "files": [
+    "dist",
+    "license"
+  ],
+  "scripts": {
+    "build": "rimraf ./dist && tsup src/index.ts --format cjs,esm --dts --clean",
+    "prepublish": "pnpm build",
+    "test": "xo --fix && vitest run --coverage",
+    "test:ci": "xo && vitest run",
+    "clean": "rimraf ./dist ./coverage ./node_modules"
+  }
 }
